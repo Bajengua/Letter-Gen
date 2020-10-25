@@ -6,6 +6,7 @@
 # This script will unzip, edit and zip back ODT documents in python
 # Source ODT file "in.odt" shall exist in "/tmp"
 # If ODT file contains string token, it will be replaced with string replacement
+# TO EXECUTE: python Letter.py + "companyName" + "Position title {2 words only}"
 #
 
 import os
