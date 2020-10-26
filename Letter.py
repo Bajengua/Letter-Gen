@@ -34,14 +34,13 @@ token01="COMPANY01"
 replacement01=(str(sys.argv[1]))
 
 token02="POSITION02"
-replacement02=(str(sys.argv[2]) + " " + str(sys.argv[3]))
+replacement02=(str(sys.argv[2]) )
 
 token03="DATE03"
 myDateVer=datetime.datetime.now()
 replacement03=str(str(myDateVer.year) + "/"+ str(myDateVer.month) +"/"+ str(myDateVer.day))
 
-command="libreoffice  --headless --convert-to pdf NEWout.odt"
-command02="mv NEWout.pdf " + replacement01 + "-CoverLetter.pdf && rm NEWout.odt"
+
 #
 # Unzip ODT
 #
@@ -84,7 +83,13 @@ with zipfile.ZipFile(zipOutFileURL, 'w') as outzip:
         outzip.write(fileURL,fileName)
 
 
+replacement01=replacement01.replace(' ','\ ')
+command="libreoffice  --headless --convert-to pdf " + zipOutFileURL 
+command02="mv NEWout.pdf " + replacement01 + "-CoverLetter.pdf && rm " + zipOutFileURL
+command03="rm -rf " + tmpDirURL
 
+#os.system(command + command02 + command03)
 os.system(command)
 os.system(command02)
+os.system(command03)
 
